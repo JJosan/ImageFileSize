@@ -7,7 +7,7 @@
 @using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div>
-        @Html.TextBox("file", "", new { type = "file", id = "myUpload" }) <br />
+        @Html.TextBox("file", "", new { type = "file", id = "myUpload", accept = "image/png, image/jpeg" }) <br />
         <input value="Upload" type="submit" />
         @ViewBag.Message
     </div>
