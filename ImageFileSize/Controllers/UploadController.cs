@@ -93,7 +93,11 @@ namespace ImageFileSize.Controllers
                     Graphics g = Graphics.FromImage(target);
                     g.DrawRectangle(new Pen(new SolidBrush(Color.White)), 0, 0, target.Width, target.Height);
                     g.DrawImage(src, 0, 0, target.Width, target.Height);
-                    target.Save(_path, ImageFormat.Jpeg);
+
+                    // resizing
+                    Bitmap resized = new Bitmap(target, new Size(target.Width / 4, target.Height / 4));
+
+                    resized.Save(_path, ImageFormat.Jpeg);
                 }
                 ViewBag.Message = "File Uploaded Successfully!!";
                 return View();
