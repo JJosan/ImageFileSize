@@ -31,9 +31,9 @@ namespace ImageFileSize.Controllers
                     ViewBag.Message = "No File Selected";
                     return View();
                 }
-                if (maxWidth <= 0)
+                if (maxWidth < 0)
                 {
-                    ViewBag.Message = "No Max Width Defined";
+                    ViewBag.Message = "Invalid Width";
                     return View();
                 }
                 if (!file.ContentType.Contains("image"))
@@ -107,7 +107,7 @@ namespace ImageFileSize.Controllers
                     g.DrawRectangle(new Pen(new SolidBrush(Color.White)), 0, 0, target.Width, target.Height);
                     g.DrawImage(src, 0, 0, target.Width, target.Height);
 
-                    if (target.Width <= maxWidth)
+                    if (maxWidth == 0 || maxWidth >= target.Width)
                     {
                         target.Save(_path, ImageFormat.Jpeg);
                     }

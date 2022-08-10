@@ -6,7 +6,9 @@
 <br/>
 2. Select Image to reduce file size and click "Upload"
 <br/>
-<img src="https://i.imgur.com/wvwIDSU.png">
+option to set a max width on the image
+<br/>
+<img src="https://i.imgur.com/UlxXvZi.png">
 <br/>
 3. Find Processed file in the "UploadedFiles" folder in the project
 <br/>

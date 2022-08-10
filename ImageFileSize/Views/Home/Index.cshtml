@@ -9,7 +9,7 @@
 {
 <div>
     @Html.TextBoxFor(model => model.file, new { type = "file" })<br />
-    @Html.TextBoxFor(model => model.maxWidth, new { type = "input"})<br />
+    @Html.TextBoxFor(model => model.maxWidth, new { type = "input", placeholder = "Max Width (optional)"})<br /><br />
     <input value="Upload" type="submit" />
     <div>@ViewBag.Message</div>
 </div>
