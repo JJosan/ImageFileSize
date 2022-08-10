@@ -94,10 +94,23 @@ namespace ImageFileSize.Controllers
                     g.DrawRectangle(new Pen(new SolidBrush(Color.White)), 0, 0, target.Width, target.Height);
                     g.DrawImage(src, 0, 0, target.Width, target.Height);
 
-                    // resizing
-                    Bitmap resized = new Bitmap(target, new Size(target.Width / 4, target.Height / 4));
+                    const int MAX_WIDTH = 1000;
 
-                    resized.Save(_path, ImageFormat.Jpeg);
+                    if (target.Width <= MAX_WIDTH)
+                    {
+                        target.Save(_path, ImageFormat.Jpeg);
+                    } else
+                    {
+                        // resizing
+                        double scale = (double)target.Width / MAX_WIDTH;
+                        Debug.WriteLine(scale);
+                        int newWidth = (int)Math.Round(target.Width / scale);
+                        int newHeight = (int)Math.Round(target.Height / scale);
+                        Debug.WriteLine(newWidth);
+                        Bitmap resized = new Bitmap(target, new Size(newWidth, newHeight));
+                        resized.Save(_path, ImageFormat.Jpeg);
+                    }
+                    
                 }
                 ViewBag.Message = "File Uploaded Successfully!!";
                 return View();
