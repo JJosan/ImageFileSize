@@ -2,7 +2,19 @@
     ViewBag.Title = "Home Page";
 }
 
+@model ImageFileSize.Models.Inputs
+
+<h2>UploadFile</h2>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 <div>
-    <h1>HELLO</h1>
-    <a href="/upload/uploadfile">go to upload file page</a>
+    @Html.TextBoxFor(model => model.file, new { type = "file" })<br />
+    @Html.TextBoxFor(model => model.maxWidth, new { type = "input"})<br />
+    <input value="Upload" type="submit" />
+    <div>@ViewBag.Message</div>
 </div>
+}
+
+<script>
+
+</script>
